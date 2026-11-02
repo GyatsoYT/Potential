@@ -29,6 +29,8 @@ TUNE_INT NON_PAWN_CORRHIST_MULT = 1075;
 TUNE_INT CONT_CORRHIST_WEIGHT_SCALE = 299;
 TUNE_INT CONT_CORRHIST_GRAIN = 163;
 TUNE_INT CONT_CORRHIST_MULT = 931;
+
+TUNE_INT GRAVITY_ADAPT_DIV = 4;
 int CORRHIST_LIMIT = 1024;
 int BASE_CORRHIST_SIZE = 16384;
 int BASE_PAWNHIST_SIZE = 2048;
@@ -41,7 +43,8 @@ int getHistoryBonus(int depth) {
 }
 
 int scaledBonus(int score, int bonus, int gravity) {
-    return bonus - score * myAbs(bonus) / gravity;
+    int adaptiveGravity = gravity + myAbs(bonus) / GRAVITY_ADAPT_DIV;
+    return bonus - score * myAbs(bonus) / adaptiveGravity;
 }
 
 void adjust_single_quiet_hist_entry(ThreadData *t, int side, uint16_t move, int bonus) {

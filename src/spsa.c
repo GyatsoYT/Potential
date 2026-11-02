@@ -238,6 +238,8 @@ extern TUNE_INT CONT_CORRHIST_WEIGHT_SCALE;
 extern TUNE_INT CONT_CORRHIST_GRAIN;
 extern TUNE_INT CONT_CORRHIST_MULT;
 
+extern TUNE_INT GRAVITY_ADAPT_DIV;
+
 /*██████████████████████████████████████████████████████████████*\
   ██                                                          ██
   ██                 SPSA  Parameter Registry                 ██
@@ -446,6 +448,7 @@ void spsa_init(void) {
     spsa_add_int("CONT_CORRHIST_WEIGHT_SCALE",       &CONT_CORRHIST_WEIGHT_SCALE,          269,     64,    512,  25.00, 0.002);
     spsa_add_int("CONT_CORRHIST_GRAIN",              &CONT_CORRHIST_GRAIN,                 202,     64,    512,  25.00, 0.002);
     spsa_add_int("CONT_CORRHIST_MULT",               &CONT_CORRHIST_MULT,                 977,    256,   4096, 100.00, 0.002);
+    spsa_add_int("GRAVITY_ADAPT_DIV",               &GRAVITY_ADAPT_DIV,                    4,      1,     16,   1.00, 0.002);
 
     // ── Move Ordering ──
     spsa_add_int("MAIN_HIST_WEIGHT",            &MAIN_HIST_WEIGHT,           964,      0,   2048, 100.00, 0.002);
